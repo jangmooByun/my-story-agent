@@ -1,0 +1,138 @@
+# ==============================================
+# Analyst Agent 프롬프트
+# ==============================================
+
+# 시스템 프롬프트
+system: |
+  당신은 지식 그래프 분석 전문가입니다. 개념들 사이의 관계를 파악하고 적절한 카테고리로 분류합니다.
+
+  ## 역할
+  - 개념 간 관계(Relationship) 식별
+  - 카테고리 분류
+  - 지식 구조화
+
+  ## 관계 유형
+  - RELATED_TO: 일반적인 연관 관계
+  - BELONGS_TO: 포함/소속 관계
+  - MENTIONS: 언급 관계
+  - EVOLVED_TO: 발전/변화 관계
+  - CONTRADICTS: 모순/반대 관계
+  - SUPPORTS: 지지/보완 관계
+
+  ## 출력 형식
+  반드시 JSON 형식으로 응답하세요.
+
+# 관계 분석 프롬프트
+relationship_analysis: |
+  다음 개념들 사이의 관계를 분석해주세요.
+
+  ## 개념 목록
+  {concepts}
+
+  ## 문서 컨텍스트
+  {context}
+
+  ## 분석 기준
+  1. 두 개념이 같은 문맥에서 함께 언급되는지
+  2. 한 개념이 다른 개념을 설명하거나 포함하는지
+  3. 시간적/논리적 순서가 있는지
+  4. 상호 보완적이거나 모순되는지
+
+  ## 응답 형식 (JSON)
+  ```json
+  {{
+    "relationships": [
+      {{
+        "source": "개념A",
+        "target": "개념B",
+        "type": "RELATED_TO|BELONGS_TO|MENTIONS|EVOLVED_TO|CONTRADICTS|SUPPORTS",
+        "strength": 0.0-1.0,
+        "description": "관계 설명",
+        "evidence": "근거가 되는 문장/맥락"
+      }}
+    ]
+  }}
+  ```
+
+# 카테고리 분류 프롬프트
+categorization: |
+  다음 문서/개념을 적절한 카테고리로 분류해주세요.
+
+  ## 분류 대상
+  {content}
+
+  ## 사용 가능한 카테고리
+  {categories}
+
+  ## 분류 기준
+  - 문서의 주요 주제와 목적
+  - 포함된 개념들의 성격
+  - 문서 작성 맥락
+
+  ## 응답 형식 (JSON)
+  ```json
+  {{
+    "primary_category": "주 카테고리",
+    "secondary_categories": ["보조 카테고리1", "보조 카테고리2"],
+    "confidence": 0.0-1.0,
+    "reasoning": "분류 이유"
+  }}
+  ```
+
+# 클러스터링 프롬프트
+clustering: |
+  다음 개념들을 의미적으로 유사한 그룹으로 클러스터링해주세요.
+
+  ## 개념 목록
+  {concepts}
+
+  ## 클러스터링 기준
+  - 주제적 유사성
+  - 도메인/분야
+  - 추상화 수준
+
+  ## 응답 형식 (JSON)
+  ```json
+  {{
+    "clusters": [
+      {{
+        "name": "클러스터명",
+        "concepts": ["개념1", "개념2"],
+        "description": "클러스터 설명"
+      }}
+    ]
+  }}
+  ```
+
+# 중요도 평가 프롬프트
+importance_scoring: |
+  다음 개념들의 중요도를 평가해주세요.
+
+  ## 개념 목록
+  {concepts}
+
+  ## 전체 문맥
+  {context}
+
+  ## 평가 기준
+  - 언급 빈도
+  - 다른 개념과의 연결 수
+  - 문서 주제와의 관련성
+  - 고유성/특이성
+
+  ## 응답 형식 (JSON)
+  ```json
+  {{
+    "scored_concepts": [
+      {{
+        "name": "개념명",
+        "importance": 0.0-1.0,
+        "factors": {{
+          "frequency": 0.0-1.0,
+          "connectivity": 0.0-1.0,
+          "relevance": 0.0-1.0
+        }}
+      }}
+    ]
+  }}
+  ```

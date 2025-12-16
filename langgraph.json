@@ -1,0 +1,22 @@
+{
+  "$schema": "https://langchain-ai.github.io/langgraph/schemas/langgraph.json",
+  "name": "knowledge-graph-builder",
+  "version": "1.0.0",
+  "description": "문서에서 지식 그래프를 구축하는 멀티 에이전트 시스템",
+  "graphs": {
+    "knowledge_graph": {
+      "path": "graphs/knowledge_graph.py:create_workflow",
+      "description": "Research → Analyst → Writer 워크플로우"
+    }
+  },
+  "env": {
+    "OLLAMA_BASE_URL": "http://localhost:11434"
+  },
+  "dependencies": [
+    "langchain-ollama",
+    "langgraph",
+    "pyyaml",
+    "python-docx"
+  ],
+  "python_version": ">=3.10"
+}

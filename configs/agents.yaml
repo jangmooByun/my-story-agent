@@ -1,0 +1,117 @@
+# ==============================================
+# 에이전트 설정
+# ==============================================
+
+# ----------------------------------------------
+# Research Agent (연구 에이전트)
+# ----------------------------------------------
+research_agent:
+  name: "Research Agent"
+  description: "문서를 읽고 핵심 개념을 추출하는 에이전트"
+
+  # 사용할 LLM 모델
+  model: "qwen2.5:7b"
+
+  # 사용 가능한 도구
+  tools:
+    - "document_parser"
+    - "concept_extractor"
+    - "file_read"
+    - "folder_list"
+    - "file_search"
+    - "text_search"
+
+  # 프롬프트 파일 경로
+  prompt_file: "configs/prompts/research.yaml"
+
+  # 에이전트별 설정
+  settings:
+    max_concepts_per_doc: 20
+    min_concept_confidence: 0.7
+    extract_metadata: true
+
+# ----------------------------------------------
+# Analyst Agent (분석 에이전트)
+# ----------------------------------------------
+analyst_agent:
+  name: "Analyst Agent"
+  description: "개념 간의 관계를 분석하고 카테고리를 분류하는 에이전트"
+
+  # 사용할 LLM 모델
+  model: "qwen2.5:7b"
+
+  # 사용 가능한 도구
+  tools:
+    - "relationship_finder"
+    - "categorizer"
+    - "file_search"
+    - "text_search"
+
+  # 프롬프트 파일 경로
+  prompt_file: "configs/prompts/analyst.yaml"
+
+  # 에이전트별 설정
+  settings:
+    max_relationships_per_concept: 10
+    relationship_types:
+      - "RELATED_TO"
+      - "BELONGS_TO"
+      - "MENTIONS"
+      - "EVOLVED_TO"
+      - "CONTRADICTS"
+      - "SUPPORTS"
+    default_categories:
+      - "아이디어"
+      - "프로젝트"
+      - "학습"
+      - "일상"
+      - "업무"
+      - "기타"
+
+# ----------------------------------------------
+# Writer Agent (작성 에이전트)
+# ----------------------------------------------
+writer_agent:
+  name: "Writer Agent"
+  description: "분석 결과를 Neo4j 호환 형식으로 변환하는 에이전트"
+
+  # 사용할 LLM 모델 (구조화 출력에 최적화)
+  model: "qwen2.5-coder:7b"
+
+  # 사용 가능한 도구
+  tools:
+    - "file_write"
+    - "folder_create"
+    - "neo4j_export"
+
+  # 프롬프트 파일 경로
+  prompt_file: "configs/prompts/writer.yaml"
+
+  # 에이전트별 설정
+  settings:
+    output_formats:
+      - "cypher"
+      - "csv"
+      - "markdown"
+    include_metadata: true
+    generate_summary: true
+
+# ----------------------------------------------
+# 워크플로우 설정
+# ----------------------------------------------
+workflow:
+  # 실행 순서
+  sequence:
+    - "research_agent"
+    - "analyst_agent"
+    - "writer_agent"
+
+  # 에이전트 간 데이터 전달 형식
+  data_format: "json"
+
+  # 중간 결과 저장
+  save_intermediate: true
+  intermediate_dir: "data/temp/intermediate"
+
+  # 에러 처리
+  on_error: "continue"  # "stop" | "continue" | "retry"

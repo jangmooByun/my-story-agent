@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-agent-system"
+version = "0.1.0"
+description = "LangGraph 기반 멀티 에이전트 시스템 - 문서 분석 및 Neo4j 그래프 변환"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+dependencies = [
+    # LangGraph & LangChain
+    "langgraph>=0.2.0",
+    "langchain>=0.3.0",
+    "langchain-core>=0.3.0",
+    "langchain-ollama>=0.2.0",
+
+    # Document parsing
+    "python-docx>=1.1.0",  # Word 문서 파싱
+
+    # Data processing
+    "pyyaml>=6.0",  # YAML frontmatter 파싱
+
+    # Neo4j (선택적)
+    # "neo4j>=5.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "black>=23.0",
+    "ruff>=0.1.0",
+]
+
+neo4j = [
+    "neo4j>=5.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"

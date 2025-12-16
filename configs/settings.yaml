@@ -1,0 +1,92 @@
+# ==============================================
+# My Agent System - 설정 파일
+# ==============================================
+
+# ----------------------------------------------
+# LLM 설정 (Ollama)
+# ----------------------------------------------
+llm:
+  # 기본 모델 (분석, 추론용)
+  default_model: "qwen2.5:7b"
+
+  # 코딩/구조화 출력용 모델
+  coding_model: "qwen2.5-coder:7b"
+
+  # 경량 모델 (빠른 분류용)
+  fast_model: "phi3:mini"
+
+  # Ollama 서버 설정
+  base_url: "http://localhost:11434"
+
+  # 생성 파라미터
+  temperature: 0.7
+  max_tokens: 2048
+  top_p: 0.9
+
+  # 컨텍스트 설정
+  num_ctx: 4096  # 컨텍스트 윈도우 크기
+
+# ----------------------------------------------
+# Neo4j 설정
+# ----------------------------------------------
+neo4j:
+  # 연결 정보
+  uri: "bolt://localhost:7687"
+  username: "neo4j"
+  password: "password"  # 실제 사용 시 환경변수로 대체 권장
+  database: "neo4j"
+
+  # 내보내기 설정
+  export:
+    formats:
+      - "cypher"
+      - "csv"
+      - "markdown"
+    output_dir: "data/output/neo4j"
+
+# ----------------------------------------------
+# 파일 경로 설정
+# ----------------------------------------------
+paths:
+  # 입력 디렉토리
+  input_dir: "data/input"
+
+  # 출력 디렉토리
+  output_dir: "data/output"
+
+  # 임시 파일 디렉토리
+  temp_dir: "data/temp"
+
+  # 지원 파일 확장자
+  supported_extensions:
+    - ".md"
+    - ".txt"
+    - ".csv"
+    - ".docx"
+    - ".json"
+
+# ----------------------------------------------
+# 처리 설정
+# ----------------------------------------------
+processing:
+  # 배치 처리 크기
+  batch_size: 10
+
+  # 최대 파일 크기 (MB)
+  max_file_size_mb: 50
+
+  # 동시 처리 수
+  max_concurrent: 3
+
+  # 재시도 설정
+  retry:
+    max_attempts: 3
+    delay_seconds: 1
+
+# ----------------------------------------------
+# 로깅 설정
+# ----------------------------------------------
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/agent.log"
