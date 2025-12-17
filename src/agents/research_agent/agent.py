@@ -3,10 +3,10 @@
 from pathlib import Path
 from typing import Optional
 
-from core.base_agent import BaseAgent
-from core.config import get_config
-from agents.research_agent.tools import ResearchTools
-from agents.research_agent.prompts import PROMPTS
+from src.core.base_agent import BaseAgent
+from src.core.config import get_config
+from src.agents.research_agent.tools import ResearchTools
+from src.agents.research_agent.prompts import PROMPTS
 
 
 class ResearchAgent(BaseAgent):

@@ -88,7 +88,7 @@ class DocumentParserTool:
 
     def _parse_markdown(self, path: Path, doc: ParsedDocument) -> ParsedDocument:
         """마크다운 파싱"""
-        from tools.parsers.md_parser import MarkdownParserTool
+        from src.tools.parsers.md_parser import MarkdownParserTool
 
         if self._md_parser is None:
             self._md_parser = MarkdownParserTool()
@@ -117,7 +117,7 @@ class DocumentParserTool:
 
     def _parse_text(self, path: Path, doc: ParsedDocument) -> ParsedDocument:
         """텍스트 파싱"""
-        from tools.parsers.text_parser import TextParserTool
+        from src.tools.parsers.text_parser import TextParserTool
 
         if self._text_parser is None:
             self._text_parser = TextParserTool()
@@ -134,7 +134,7 @@ class DocumentParserTool:
 
     def _parse_csv(self, path: Path, doc: ParsedDocument) -> ParsedDocument:
         """CSV 파싱"""
-        from tools.parsers.csv_reader import CSVParserTool
+        from src.tools.parsers.csv_reader import CSVParserTool
 
         if self._csv_parser is None:
             self._csv_parser = CSVParserTool()
@@ -151,7 +151,7 @@ class DocumentParserTool:
 
     def _parse_docx(self, path: Path, doc: ParsedDocument) -> ParsedDocument:
         """워드 문서 파싱"""
-        from tools.parsers.docx_parser import DocxParserTool
+        from src.tools.parsers.docx_parser import DocxParserTool
 
         if self._docx_parser is None:
             self._docx_parser = DocxParserTool()

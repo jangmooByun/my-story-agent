@@ -15,8 +15,8 @@ import argparse
 import sys
 from pathlib import Path
 
-from core.logger import setup_logger, set_log_level
-from graphs import KnowledgeGraphBuilder
+from src.core.logger import setup_logger, set_log_level
+from src.graphs import KnowledgeGraphBuilder
 
 
 def main():

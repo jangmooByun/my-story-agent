@@ -14,10 +14,10 @@
     })
 """
 
-from agents.analyst_agent.agent import AnalystAgent
-from agents.analyst_agent.state import AnalystState
-from agents.analyst_agent.tools import AnalystTools
-from agents.analyst_agent.prompts import PROMPTS
+from src.agents.analyst_agent.agent import AnalystAgent
+from src.agents.analyst_agent.state import AnalystState
+from src.agents.analyst_agent.tools import AnalystTools
+from src.agents.analyst_agent.prompts import PROMPTS
 
 __all__ = [
     "AnalystAgent",

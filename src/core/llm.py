@@ -6,9 +6,9 @@ from typing import Optional
 from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage, SystemMessage
 
-from core.config import get_config, LLMConfig
-from core.exceptions import LLMConnectionError, LLMResponseError
-from core.logger import get_logger
+from src.core.config import get_config, LLMConfig
+from src.core.exceptions import LLMConnectionError, LLMResponseError
+from src.core.logger import get_logger
 
 logger = get_logger(__name__)
 

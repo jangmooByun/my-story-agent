@@ -5,7 +5,7 @@
   "description": "문서에서 지식 그래프를 구축하는 멀티 에이전트 시스템",
   "graphs": {
     "knowledge_graph": {
-      "path": "graphs/knowledge_graph.py:create_workflow",
+      "path": "src/graphs/knowledge_graph.py:create_workflow",
       "description": "Research → Analyst → Writer 워크플로우"
     }
   },

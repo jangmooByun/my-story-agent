@@ -2,9 +2,9 @@
 
 from typing import Optional
 
-from core.base_agent import BaseAgent
-from agents.analyst_agent.tools import AnalystTools
-from agents.analyst_agent.prompts import PROMPTS
+from src.core.base_agent import BaseAgent
+from src.agents.analyst_agent.tools import AnalystTools
+from src.agents.analyst_agent.prompts import PROMPTS
 
 
 class AnalystAgent(BaseAgent):

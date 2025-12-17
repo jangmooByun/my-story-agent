@@ -10,10 +10,10 @@
     result = agent.run({"input_dir": "data/input"})
 """
 
-from agents.research_agent.agent import ResearchAgent
-from agents.research_agent.state import ResearchState
-from agents.research_agent.tools import ResearchTools
-from agents.research_agent.prompts import PROMPTS
+from src.agents.research_agent.agent import ResearchAgent
+from src.agents.research_agent.state import ResearchState
+from src.agents.research_agent.tools import ResearchTools
+from src.agents.research_agent.prompts import PROMPTS
 
 __all__ = [
     "ResearchAgent",

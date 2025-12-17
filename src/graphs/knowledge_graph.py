@@ -8,11 +8,11 @@ from typing import Optional
 
 from langgraph.graph import StateGraph, END
 
-from core.logger import get_logger
-from graphs.state import WorkflowState, create_initial_state
-from agents.research_agent import ResearchAgent
-from agents.analyst_agent import AnalystAgent
-from agents.writer_agent import WriterAgent
+from src.core.logger import get_logger
+from src.graphs.state import WorkflowState, create_initial_state
+from src.agents.research_agent import ResearchAgent
+from src.agents.analyst_agent import AnalystAgent
+from src.agents.writer_agent import WriterAgent
 
 logger = get_logger(__name__)
 

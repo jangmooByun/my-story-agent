@@ -2,10 +2,10 @@
 
 from typing import Optional
 
-from core.base_agent import BaseAgent
-from tools.cypher import CypherManager
-from agents.writer_agent.tools import WriterTools
-from agents.writer_agent.prompts import PROMPTS
+from src.core.base_agent import BaseAgent
+from src.tools.cypher import CypherManager
+from src.agents.writer_agent.tools import WriterTools
+from src.agents.writer_agent.prompts import PROMPTS
 
 
 class WriterAgent(BaseAgent):

@@ -1,7 +1,7 @@
 """LangGraph 워크플로우 모듈"""
 
-from graphs.state import WorkflowState
-from graphs.knowledge_graph import (
+from src.graphs.state import WorkflowState
+from src.graphs.knowledge_graph import (
     create_workflow,
     KnowledgeGraphBuilder,
 )

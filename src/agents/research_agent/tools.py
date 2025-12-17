@@ -3,7 +3,7 @@
 from pathlib import Path
 from typing import Optional
 
-from tools.parsers import DocumentParserTool, ParsedDocument
+from src.tools.parsers import DocumentParserTool, ParsedDocument
 
 
 class ResearchTools:

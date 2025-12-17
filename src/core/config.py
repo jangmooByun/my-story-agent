@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 
 import yaml
 
-from core.exceptions import ConfigError
+from src.core.exceptions import ConfigError
 
 
 @dataclass

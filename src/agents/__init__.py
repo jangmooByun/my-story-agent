@@ -6,9 +6,9 @@
 - WriterAgent: Cypher 쿼리 생성, 중복 체크, 파일 저장
 """
 
-from agents.research_agent import ResearchAgent
-from agents.analyst_agent import AnalystAgent
-from agents.writer_agent import WriterAgent
+from src.agents.research_agent import ResearchAgent
+from src.agents.analyst_agent import AnalystAgent
+from src.agents.writer_agent import WriterAgent
 
 __all__ = [
     "ResearchAgent",

@@ -3,8 +3,8 @@
 from abc import ABC, abstractmethod
 from typing import Any, Optional, TypedDict
 
-from core.llm import get_llm_manager
-from core.logger import get_logger
+from src.core.llm import get_llm_manager
+from src.core.logger import get_logger
 
 
 class BaseAgent(ABC):
